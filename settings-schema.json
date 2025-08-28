@@ -12,7 +12,6 @@
             "type": "page",
             "title": "Quotes",
             "sections": [
-                "dataSymbolsSection",
                 "dataUpdateSection"
             ]
         },
@@ -46,13 +45,6 @@
             "title": "Network",
             "sections": [
                 "networkSessionSection"
-            ]
-        },
-        "dataSymbolsSection": {
-            "type": "section",
-            "title": "Quotes",
-            "keys": [
-                "quoteSymbols"
             ]
         },
         "dataUpdateSection": {
@@ -273,13 +265,6 @@
         "default": "",
         "description": "Custom date format",
         "tooltip": "Format date with custom format instead of system settings.\nExamples:\n%m/%d          03/15\n%Y-%m-%d   2024-03-15\n%A, %b %d   Friday, Mar 15"
-    },
-    "quoteSymbols": {
-        "type": "textview",
-        "height": 400,
-        "default": "MMM\nAMZN\nAXP\nAMGN\nAAPL\nBA\nCAT\nCVX\nCSCO\nKO\nGS\nHD\nHON\nIBM\nJNJ\nJPM\nMCD\nMRK\nMSFT\nNKE\nNVDA\nPG\nCRM\nSHW\nTRV\nUNH\nVZ\nV\nWMT\nDIS",
-        "description": "Quote symbols",
-        "tooltip": "List of quote symbols, separated with line-breaks"
     },
     "updateDataButton": {
         "type": "button",
