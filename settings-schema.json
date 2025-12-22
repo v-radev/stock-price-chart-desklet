@@ -3,9 +3,8 @@
         "type": "layout",
         "pages": [
             "generalSettingsPage",
-            "detailsSettingsPage",
-            "presentationPage",
-            "layoutPage"
+            "renderSettingsPage",
+            "layoutSettingsPage"
         ],
         "generalSettingsPage": {
             "type": "page",
@@ -15,35 +14,30 @@
                 "generalSettingsDataSection"
             ]
         },
-        "detailsSettingsPage": {
+        "renderSettingsPage": {
             "type": "page",
-            "title": "Details",
+            "title": "Render settings",
             "sections": [
-                "detailsSettingsSection"
+                "renderSettingsDateTimeFormattingSection",
+                "renderSettingsFontSection",
+                "renderSettingsColorsSection"
             ]
         },
-        "presentationPage": {
-            "type": "page",
-            "title": "Presentation",
-            "sections": [
-                "presentationDateTimeFormattingSection",
-                "presentationFontSection",
-                "presentationColorsSection"
-            ]
-        },
-        "layoutPage": {
+        "layoutSettingsPage": {
             "type": "page",
             "title": "Layout",
             "sections": [
-                "layoutDimensionSection",
-                "layoutEffectsSection"
+                "layoutSizeSettingsSection",
+                "layoutEffectsSettingsSection"
             ]
         },
         "generalSettingsTickerSection": {
             "type": "section",
-            "title": "Ticker",
+            "title": "Financial Data",
             "keys": [
-                "tickerSymbol"
+                "tickerSymbol",
+                "daysPeriodToShow",
+                "showCompanyNameOrTicker"
             ]
         },
         "generalSettingsDataSection": {
@@ -55,23 +49,15 @@
                 "updateDataButton"
             ]
         },
-        "detailsSettingsSection": {
-            "type": "section",
-            "title": "Name",
-            "keys": [
-                "showCompanyNameOrTicker"
-            ]
-        },
-        "presentationDateTimeFormattingSection": {
+        "renderSettingsDateTimeFormattingSection": {
             "type": "section",
             "title": "Date and Time Format",
             "keys": [
                 "use24HourTime",
-                "customTimeFormat",
                 "customDateFormat"
             ]
         },
-        "presentationFontSection": {
+        "renderSettingsFontSection": {
             "type": "section",
             "title": "Font",
             "keys": [
@@ -80,7 +66,7 @@
                 "fontScale"
             ]
         },
-        "presentationColorsSection": {
+        "renderSettingsColorsSection": {
             "type": "section",
             "title": "Trend Colors",
             "keys": [
@@ -89,15 +75,14 @@
                 "unchangedTrendColor"
             ]
         },
-        "layoutDimensionSection": {
+        "layoutSizeSettingsSection": {
             "type": "section",
-            "title": "Dimension",
+            "title": "Desklet",
             "keys": [
-                "width",
-                "height"
+                "deskletScaleSize"
             ]
         },
-        "layoutEffectsSection": {
+        "layoutEffectsSettingsSection": {
             "type": "section",
             "title": "Effects",
             "keys": [
@@ -107,25 +92,15 @@
             ]
         }
     },
-    "width": {
-        "type": "spinbutton",
-        "default": 600,
-        "min": 40,
-        "max": 4000,
-        "step": 20,
-        "description": "Width",
-        "units": "pixels",
-        "tooltip": "Desklet width in pixels"
-    },
-    "height": {
-        "type": "spinbutton",
-        "default": 640,
-        "min": 40,
-        "max": 4000,
-        "step": 20,
-        "units": "pixels",
-        "description": "Height",
-        "tooltip": "Desklet height in pixels"
+
+    "deskletScaleSize": {
+        "type": "scale",
+        "default": 1.5,
+        "min": 0.1,
+        "max": 5.0,
+        "step": 0.1,
+        "description": "Desklet scale size",
+        "tooltip": "Adjust scale size of the desklet"
     },
     "transparency": {
         "type": "scale",
@@ -152,6 +127,7 @@
         "description": "Corner radius",
         "tooltip": "The higher the value, the rounder the desklet's corners"
     },
+
     "delayMinutes": {
         "type": "spinbutton",
         "default": 10,
@@ -171,9 +147,18 @@
 
     "tickerSymbol": {
       "type": "entry",
-      "default": "LULU",
+      "default": "TSLA",
       "description": "Ticker symbol",
       "tooltip": "The stock ticker symbol to display data for (e.g., AAPL, GOOGL, MSFT)"
+    },
+    "daysPeriodToShow": {
+      "type": "scale",
+      "default": 7,
+      "min": 1,
+      "max": 31,
+      "step": 1,
+      "description": "Days period to show",
+      "tooltip": "Number of past days to display in the stock price chart"
     },
 
     "use24HourTime": {
@@ -182,23 +167,18 @@
         "description": "Force 24-hour clock",
         "tooltip": "Always display time in 24-hour notation, overriding system settings.\nThis setting is ignored, when a custom time format is defined."
     },
-    "customTimeFormat": {
-        "type": "entry",
-        "default": "",
-        "description": "Custom time format",
-        "tooltip": "Format time with custom format instead of system settings.\nExamples:\n%H:%M:%S    23:47:51\n%I:%M %p    11:47 PM"
-    },
     "customDateFormat": {
         "type": "entry",
         "default": "",
         "description": "Custom date format",
         "tooltip": "Format date with custom format instead of system settings.\nExamples:\n%m/%d          03/15\n%Y-%m-%d   2024-03-15\n%A, %b %d   Friday, Mar 15"
     },
+
     "updateDataButton": {
         "type": "button",
-        "callback": "onManualRefreshRequested",
+        "callback": "onClickUpdateDataButton",
         "description": "Refresh data",
-        "tooltip": "Fetch the latest stock data immediately"
+        "tooltip": "Fetch the latest stock data immediately."
     },
     "showCompanyNameOrTicker": {
         "type": "checkbox",
